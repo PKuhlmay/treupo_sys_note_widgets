@@ -14,26 +14,20 @@ class PagesWithInternalNoteToDosDataProvider implements PageProviderInterface
     /**
      * @var int
      */
-    private int $category;
-
-    /**
-     * @var int
-     */
     private int $limit;
 
-    public function __construct(int $category, int $limit)
+    public function __construct(int $limit)
     {
-        $this->category = $category;
         $this->limit = $limit ?: 5;
     }
 
-    public function getPages(): array
+    public function getPages(int $category): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('sys_note');
 
         $constraints = [
             $queryBuilder->expr()->orX(
-                $queryBuilder->expr()->eq('category', $queryBuilder->createNamedParameter($this->category))
+                $queryBuilder->expr()->eq('category', $queryBuilder->createNamedParameter($category))
             ),
         ];
 

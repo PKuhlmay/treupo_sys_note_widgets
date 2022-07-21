@@ -18,8 +18,8 @@ services:
       $view: '@dashboard.views.widget'
       $dataProvider: '@Treupo\SysNoteWidgets\Widgets\Provider\PagesWithInternalNoteToDosDataProvider'
       $options:
+        category: 1
         template: 'Widget/PagesWithInternalNote'
-        category: 0
     tags:
       - name: dashboard.widget
         identifier: 'sys_note_instructions'
@@ -36,8 +36,8 @@ services:
       $view: '@dashboard.views.widget'
       $dataProvider: '@Treupo\SysNoteWidgets\Widgets\Provider\PagesWithInternalNoteToDosDataProvider'
       $options:
-        template: 'Widget/PagesWithInternalNote'
         category: 2
+        template: 'Widget/PagesWithInternalNote'
     tags:
       - name: dashboard.widget
         identifier: 'sys_note_template'
