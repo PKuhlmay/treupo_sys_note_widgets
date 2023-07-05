@@ -1,0 +1,19 @@
+# eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzUxMiJ9.eyJpc3MiOiJleHRlbnNpb25zLnR5cG8zLm9yZyIsImF1ZCI6ImV4dGVuc2lvbnMudHlwbzMub3JnIiwic3ViIjoidDNvLXRlci1yZXN0IiwianRpIjoiOWE0NTMzMTcxOGFkODY2NDFiNWI3YzkwNmQ2YzEyIiwiaWF0IjoxNjg4NTQzMjMwLCJuYmYiOjE2ODg1NDMyOTAsImV4cCI6MTcwNDAxMjQzMCwidXNlciI6MTg3NH0.ACOwozVWfJbVX81YiqWZmWIyGpbTLGZGk3KT-r5DFSIIFVCiHG-dHKfB1kRjx2vWRu5z0sUlEYn5_5ITCh34rNmxAXqxsf7r-C-yheCmyk0-k46yYOHNKSiSeE6dR7cJqK9F-sLAnfIv0qVmpoFUzheFqBEnd1azAGYObpmGpHAA8eGg
+
+name: TERUpload
+
+on:
+  push:
+    tags:
+      - "**"
+
+jobs:
+  TERUpload:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v1
+      - uses: tomasnorre/typo3-upload-ter@v2
+        with:
+          api-token: ${{ secrets.TYPO3_API_TOKEN }}
